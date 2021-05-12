@@ -1,4 +1,5 @@
 # add this to spec/spec_helper.rb
+require './spec/features/web_helpers.rb'
 
 ENV['RACK_ENV'] = 'test'
 

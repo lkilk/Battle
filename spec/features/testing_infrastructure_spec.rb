@@ -11,10 +11,18 @@ end
 
 feature 'Inputting Players names' do
   scenario 'Players submit names and then see them on screen' do
-    visit('/')
-    fill_in :player_1_name, with: 'Liam'
-    fill_in :player_2_name, with: 'Jay'
-    click_button 'Submit'
+    sign_in_and_play
     expect(page).to have_content 'Liam vs. Jay'
+  end
+end
+
+# As Player 1,
+# So I can see how close I am to winning
+# I want to see Player 2's Hit Points
+
+feature 'view p2 hit points' do
+  scenario 'Player 1 can see Player 2 hit points' do
+    sign_in_and_play
+    expect(page).to have_content "Jay's hit points 100"
   end
 end
