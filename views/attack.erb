@@ -1,9 +1,11 @@
 <% if @game.current_turn ==  @game.player_1 %>
-  You connect an uppercut on <%= @game.player_2.name %>!
+  <h1 style="font-family: fantasy">You connect an uppercut on <%= @game.player_2.name %>!</h1>
+  <img src="https://www.thetimes.co.uk/imageserver/image/%2Fmethode%2Ftimes%2Fprod%2Fweb%2Fbin%2F278ecd2a-56d0-11e8-9ed6-2a2b8ba208a7.jpg?crop=2431%2C1367%2C127%2C1057&resize=1180" alt="Gladiator Punch!" width="600" height="500">
 <% else %>
-  You dropkick <%= @game.player_1.name %> in the face!
-<% end %>
 
+  <h1 style="font-family: fantasy">You dropkick <%= @game.player_1.name %> in the face!</h1>
+  <img src="https://cdn.historycollection.com/wp-content/uploads/2019/02/Glad-pic-29-YouTube-1280x640.jpg" alt="Gladiator Punch!" width="600" height="500">
+<% end %>
 
 <form action="/switch_turn" method = "post">
   <br>
