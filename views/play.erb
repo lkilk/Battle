@@ -1,9 +1,11 @@
 
 <%= @game.player_1.name %> vs. <%= @game.player_2.name %>
 <br><br>
+<%= @game.current_turn.name %>'s turn
+<br><br>
 <%= @game.player_2.name %>'s hit points <%= @game.player_2.hit_points %>
 
 <form action="/attack">
   <br>
-  <input type="submit" value="Attack P2">
+  <input type="submit" value="Attack">
 </form>
