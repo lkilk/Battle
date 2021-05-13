@@ -1,3 +1,5 @@
+# require_relative './app.rb'
+
 class Player
   DEFAULT_HIT_POINTS = 100
   attr_reader :name, :hit_points

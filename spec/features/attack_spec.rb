@@ -16,6 +16,8 @@ feature 'reduce hit points' do
   scenario 'attack button reduces p2 hit points by 10' do
     sign_in_and_play
     click_button 'Attack'
+    click_button 'OK'
+    save_and_open_page
     expect(page).not_to have_content "Jay's hit points 100"
     expect(page).to have_content "Jay's hit points 90"
   end
