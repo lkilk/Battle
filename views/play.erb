@@ -1,13 +1,28 @@
+<body style="background-image: url('https://wallpaperaccess.com/full/1659889.jpg')"></body>
 
-<%= @game.player_1.name %> vs. <%= @game.player_2.name %>
-<br><br>
-<%= @game.current_turn.name %>'s turn
-<br><br>
-<%= @game.player_1.name %>'s hit points <%= @game.player_1.hit_points %>
-<br><br>
-<%= @game.player_2.name %>'s hit points <%= @game.player_2.hit_points %>
+<h1 style="font-family: fantasy; text-align: center"> Gladiator <%= @game.player_1.name %> vs. Gladiator <%= @game.player_2.name %></h1>
+<h2 style="font-family: fantasy; text-align: center"> Gladiator <%= @game.current_turn.name %>'s turn</h2>
+<h4 style="text-align: center">Gladiator <%= @game.player_1.name %>'s hit points: <%= @game.player_1.hit_points %> ---------- Gladiator <%= @game.player_2.name %>'s hit points: <%= @game.player_2.hit_points %> </h4>
 
-<form action="/attack" method = 'post'>
+
+<style>
+input[type=submit]{
+  background-color: firebrick;
+  border: 4px solid: white;
+  color: black;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: crosshair;
+}
+input[type="submit"]:hover {
+	background: red;
+}
+</style>
+
+<form style="text-align: center" action="/attack" method = 'post'>
   <br>
   <input type="submit" value="Attack">
 </form>
+
+<center><img style="border: 5px groove firebrick;" src="https://cdn.wallpapersafari.com/61/12/3Qf14A.jpg" alt="Gladiator Colosseum!" width="600" height="500"></center>

@@ -7,7 +7,7 @@ end
 
 def gameplay
   click_button 'Attack'
-  click_button 'OK'
+  click_button 'Return to game'
 end
 
 def endgame

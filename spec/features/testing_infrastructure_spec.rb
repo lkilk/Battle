@@ -1,7 +1,7 @@
 feature 'Testing infrastructure' do
   scenario 'Can run app and check page content' do
     visit('/')
-    expect(page).to have_content 'GLADIATORS!Are You Ready For Battle!?'
+    expect(page).to have_content 'GLADIATORS!'
   end
 end
 
@@ -12,7 +12,7 @@ end
 feature 'Inputting Players names' do
   scenario 'Players submit names and then see them on screen' do
     sign_in_and_play
-    expect(page).to have_content 'Liam vs. Jay'
+    expect(page).to have_content 'Gladiator Liam vs. Gladiator Jay'
   end
 end
 
@@ -22,14 +22,14 @@ end
 feature 'view p1 hit points' do
   scenario 'Player 1 hit points are visible' do
     sign_in_and_play
-    expect(page).to have_content "Liam's hit points 100"
+    expect(page).to have_content "Gladiator Liam's hit points: 100"
   end
 end
 
 feature 'view p2 hit points' do
   scenario 'Player 2 hit points are visible' do
     sign_in_and_play
-    expect(page).to have_content "Jay's hit points 100"
+    expect(page).to have_content "Gladiator Jay's hit points: 100"
   end
 end
 
@@ -43,7 +43,7 @@ feature 'player can lose' do
     gameplay
     allow(Kernel).to receive(:rand).and_return(100)
   endgame
-    expect(page).to have_content "Jay loses!"
+    expect(page).to have_content "Gladiator Jay loses!"
   end
   # scenario 'Player 2 loses' do
   #   click_button 'Attack'
