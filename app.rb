@@ -27,13 +27,20 @@ enable :sessions
       erb (:play)
     end
 
+  post '/attack' do
+    if $game.current_turn == $game.player_1 && $game.game_over? == false
+      $game.attack($game.player_2)
+      redirect '/attack'
+    elsif $game.current_turn == $game.player_2 && $game.game_over? == false
+      $game.attack($game.player_1)
+      redirect '/attack'
+    elsif $game.game_over? == true
+      redirect '/game_over'
+    end
+  end
+
   get '/attack' do
     @game = $game
-    if @game.current_turn == @game.player_1
-      @game.attack(@game.player_2)
-    else
-      @game.attack(@game.player_1)
-    end
     erb (:attack)
   end
 
@@ -42,6 +49,10 @@ enable :sessions
     redirect('/play')
   end
 
+  get '/game_over' do
+    @game = $game
+    erb (:game_over)
+  end
 
   run! if app_file == $0
 end

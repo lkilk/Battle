@@ -7,7 +7,7 @@
 <br><br>
 <%= @game.player_2.name %>'s hit points <%= @game.player_2.hit_points %>
 
-<form action="/attack">
+<form action="/attack" method = 'post'>
   <br>
   <input type="submit" value="Attack">
 </form>

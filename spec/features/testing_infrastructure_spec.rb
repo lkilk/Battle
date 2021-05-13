@@ -32,3 +32,23 @@ feature 'view p2 hit points' do
     expect(page).to have_content "Jay's hit points 100"
   end
 end
+
+feature 'player can lose' do
+  context 'When HP reached 0, receive lose message' do
+    before do
+    sign_in_and_play
+    # 20.times do gameplay
+    # end
+    # endgame
+    gameplay
+    allow(Kernel).to receive(:rand).and_return(100)
+  endgame
+    expect(page).to have_content "Jay loses!"
+  end
+  # scenario 'Player 2 loses' do
+  #   click_button 'Attack'
+  #   # expect(page).not_to have_content "You dropkick Liam in the face!"
+  #   expect(page).to have_content "Jay loses!"
+  #   end
+  end
+end
