@@ -1,6 +1,10 @@
-You connect an uppercut on <%= @game.player_2.name %>!
+<% if @game.current_turn ==  @game.player_1 %>
+  You connect an uppercut on <%= @game.player_2.name %>!
+<% else %>
+  You dropkick <%= @game.player_1.name %> in the face!
+<% end %>
 
-<form action="/play">
+<form action="/switch_turn" method = "post">
   <br>
   <input type="submit" value="OK">
 </form>

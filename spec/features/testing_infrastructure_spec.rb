@@ -19,9 +19,15 @@ end
 # As Player 1,
 # So I can see how close I am to winning
 # I want to see Player 2's Hit Points
+feature 'view p1 hit points' do
+  scenario 'Player 1 hit points are visible' do
+    sign_in_and_play
+    expect(page).to have_content "Liam's hit points 100"
+  end
+end
 
 feature 'view p2 hit points' do
-  scenario 'Player 1 can see Player 2 hit points' do
+  scenario 'Player 2 hit points are visible' do
     sign_in_and_play
     expect(page).to have_content "Jay's hit points 100"
   end

@@ -29,9 +29,17 @@ enable :sessions
 
   get '/attack' do
     @game = $game
-    @game.attack(@game.player_2)
-    @game.switch_turn
+    if @game.current_turn == @game.player_1
+      @game.attack(@game.player_2)
+    else
+      @game.attack(@game.player_1)
+    end
     erb (:attack)
+  end
+
+  post '/switch_turn' do
+    $game.switch_turn
+    redirect('/play')
   end
 
 

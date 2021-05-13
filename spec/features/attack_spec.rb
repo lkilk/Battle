@@ -1,11 +1,22 @@
 # As Player 1,
 # So I can win a game of Battle,
 # I want to attack Player 2, and I want to get a confirmation
+
 feature 'attack player 2' do
   scenario 'attack p2 and get confirmation' do
     sign_in_and_play
     click_button 'Attack'
     expect(page).to have_content "You connect an uppercut on Jay!"
+  end
+end
+
+feature 'attack player 1' do
+  scenario 'attack p1 and get confirmation' do
+    sign_in_and_play
+    click_button 'Attack'
+    click_button 'OK'
+    click_button 'Attack'
+    expect(page).to have_content "You dropkick Liam in the face!"
   end
 end
 
@@ -19,6 +30,16 @@ feature 'reduce hit points' do
     click_button 'OK'
     expect(page).not_to have_content "Jay's hit points 100"
     expect(page).to have_content "Jay's hit points 90"
+  end
+
+  scenario 'attack button reduces p1 hit points by 10' do
+    sign_in_and_play
+    click_button 'Attack'
+    click_button 'OK'
+    click_button 'Attack'
+    click_button 'OK'
+    expect(page).not_to have_content "Liam's hit points 100"
+    expect(page).to have_content "Liam's hit points 90"
   end
 end
 
