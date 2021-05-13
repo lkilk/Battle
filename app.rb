@@ -30,14 +30,19 @@ class Battle < Sinatra::Base
     end
 
   post '/attack' do
-    if @game.current_turn == @game.player_1 && @game.game_over? == false
-      @game.attack(@game.player_2)
-      redirect '/attack'
-    elsif @game.current_turn == @game.player_2 && @game.game_over? == false
-      @game.attack(@game.player_1)
-      redirect '/attack'
-    elsif @game.game_over? == true
+    # if @game.current_turn == @game.player_1 && @game.game_over? == false
+    #   @game.attack(@game.player_2)
+    #   redirect '/attack'
+    # elsif @game.current_turn == @game.player_2 && @game.game_over? == false
+    #   @game.attack(@game.player_1)
+    #   redirect '/attack'
+    # elsif @game.game_over? == true
+    #   redirect '/game_over'
+    @game.attack(@game.opponent_of(@game.current_turn))
+    if @game.game_over?
       redirect '/game_over'
+    else
+      redirect '/attack'
     end
   end
 
