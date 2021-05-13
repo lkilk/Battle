@@ -29,7 +29,7 @@ feature 'reduce hit points' do
     click_button 'Attack'
     click_button 'OK'
     expect(page).not_to have_content "Jay's hit points 100"
-    expect(page).to have_content "Jay's hit points 90"
+    expect(page).to have_content "Jay's hit points 80"
   end
 
   scenario 'attack button reduces p1 hit points by 10' do
@@ -39,7 +39,7 @@ feature 'reduce hit points' do
     click_button 'Attack'
     click_button 'OK'
     expect(page).not_to have_content "Liam's hit points 100"
-    expect(page).to have_content "Liam's hit points 90"
+    expect(page).to have_content "Liam's hit points 80"
   end
 end
 
