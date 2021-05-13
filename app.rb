@@ -8,7 +8,11 @@ class Battle < Sinatra::Base
     register Sinatra::Reloader
   end
 
-enable :sessions
+  enable :sessions
+
+  before do
+    @game = Game.instance
+  end
 
   get '/' do
     erb (:index)
@@ -17,40 +21,36 @@ enable :sessions
   post '/names' do
     player_1 = Player.new(params[:player_1_name])
     player_2 = Player.new(params[:player_2_name])
-    $game = Game.new(player_1, player_2)
+    @game = Game.create(player_1, player_2)
     redirect '/play'
   end
 
     get '/play' do
-      @game = $game
-      # @player_2_name.hit_points = $player_2.hit_points
       erb (:play)
     end
 
   post '/attack' do
-    if $game.current_turn == $game.player_1 && $game.game_over? == false
-      $game.attack($game.player_2)
+    if @game.current_turn == @game.player_1 && @game.game_over? == false
+      @game.attack(@game.player_2)
       redirect '/attack'
-    elsif $game.current_turn == $game.player_2 && $game.game_over? == false
-      $game.attack($game.player_1)
+    elsif @game.current_turn == @game.player_2 && @game.game_over? == false
+      @game.attack(@game.player_1)
       redirect '/attack'
-    elsif $game.game_over? == true
+    elsif @game.game_over? == true
       redirect '/game_over'
     end
   end
 
   get '/attack' do
-    @game = $game
     erb (:attack)
   end
 
   post '/switch_turn' do
-    $game.switch_turn
+    @game.switch_turn
     redirect('/play')
   end
 
   get '/game_over' do
-    @game = $game
     erb (:game_over)
   end
 
